@@ -5,13 +5,22 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+    "https://intervoz-frontend.onrender.com",
+    "http://localhost:5500",
+    "http://localhost:3000",
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true
+}));
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "https://intervoz-frontend.onrender.com",
+        origin: allowedOrigins,
         methods: ["GET", "POST"],
         credentials: true
     }
