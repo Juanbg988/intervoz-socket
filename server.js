@@ -7,17 +7,13 @@ const app = express();
 
 app.use(cors());
 
-app.use(cors({
-    origin: "https://intervoz.infinityfreeapp.com",
-    methods: ["GET", "POST"]
-}));
-
 const server = http.createServer(app);
 
 const io = new Server(server, {
-    cors:{
-        origin: "https://intervoz.infinityfreeapp.com",
-        methods:["GET","POST"]
+    cors: {
+        origin: "https://intervoz-frontend.onrender.com",
+        methods: ["GET", "POST"],
+        credentials: true
     }
 });
 
